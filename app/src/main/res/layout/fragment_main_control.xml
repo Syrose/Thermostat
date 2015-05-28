@@ -1,6 +1,6 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="tuehomework.thermostat.MainControl">
+    android:layout_height="match_parent" tools:context="tuehomework.thermostat.UI.MainControl">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -8,6 +8,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:text="+"
+        android:textSize="30dp"
         android:background="@drawable/circle_shape"
         android:id="@+id/button"
         android:layout_alignTop="@+id/textView2"
@@ -39,7 +40,8 @@
     <Button
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:text="+"
+        android:text="-"
+        android:textSize="30dp"
         android:background="@drawable/circle_shape"
         android:id="@+id/button2"
         android:layout_alignTop="@+id/textView2"

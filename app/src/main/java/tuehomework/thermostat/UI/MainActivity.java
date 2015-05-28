@@ -1,7 +1,8 @@
-package tuehomework.thermostat;
+package tuehomework.thermostat.UI;
 
 import java.util.Locale;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.View;
+
+import tuehomework.thermostat.R;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -87,18 +91,6 @@ public class MainActivity extends ActionBarActivity {
         public int getCount() {
             // Show 3 total pages.
             return 2;
-        }
-
-        @Override
-        public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return getString(R.string.title_section1).toUpperCase(l);
-                case 1:
-                    return getString(R.string.title_section2).toUpperCase(l);
-            }
-            return null;
         }
     }
 }
