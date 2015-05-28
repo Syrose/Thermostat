@@ -4,12 +4,6 @@ package tuehomework.thermostat.Thermostat;
  * Created by Platon on 28.05.2015.
  */
 public class Thermostat {
-    public void setTemperatureChangedListener(OnTemperatureChangedListener temperatureChangedListener) {
-        this.temperatureChangedListener = temperatureChangedListener;
-    }
-
-    OnTemperatureChangedListener temperatureChangedListener;
-
     public Schedule getSchedule() {
         return schedule;
     }

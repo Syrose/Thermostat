@@ -27,9 +27,18 @@ public class ThermostatClient {
     private Thermostat chosen;
     private ArrayList<Thermostat> thermostats;
 
+    public void setOnThermostatChosenListener(OnThermostatChosenListener thermostatChosenListener) {
+        this.thermostatChosenListener = thermostatChosenListener;
+    }
+
+    private OnThermostatChosenListener thermostatChosenListener;
+
     public void chooseThermostat(int position)
     {
         chosen = thermostats.get(position);
+        if (thermostatChosenListener != null) {
+            thermostatChosenListener.onThermostatChosen();
+        }
     }
 
     public ArrayList<Thermostat> getAvailableThermostats()

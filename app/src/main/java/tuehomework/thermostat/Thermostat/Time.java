@@ -7,15 +7,10 @@ public class Time {
     public int getHours() {
         return hours;
     }
-
-
     public int getSeconds() {
         return seconds;
     }
 
     private int hours;
-
-
     private int seconds;
-
 }

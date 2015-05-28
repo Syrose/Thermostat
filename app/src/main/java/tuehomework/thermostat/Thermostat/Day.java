@@ -26,22 +26,22 @@ public class Day {
 
     ArrayList<Switch> nightToDaySwitches;
 
-    public void addNightSwitch(Switch sw)
+    public void addNightToDaySwitch(Switch sw)
     {
         nightToDaySwitches.add(sw);
     }
 
-    public void addDaySwitch(Switch sw)
+    public void addDayToNightSwitch(Switch sw)
     {
         dayToNightSwitches.add(sw);
     }
 
-    public void deleteNightSwitch(int position)
+    public void deleteNightToDaySwitch(int position)
     {
         nightToDaySwitches.remove(position);
     }
 
-    public void deleteDaySwitch(int position)
+    public void deleteDayToNightSwitch(int position)
     {
         dayToNightSwitches.remove(position);
     }

@@ -10,13 +10,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import tuehomework.thermostat.R;
 import tuehomework.thermostat.Thermostat.Days;
+import tuehomework.thermostat.Thermostat.OnTemperatureChangedListener;
+import tuehomework.thermostat.Thermostat.OnThermostatChosenListener;
 import tuehomework.thermostat.Thermostat.Thermostat;
+import tuehomework.thermostat.Thermostat.ThermostatClient;
 
 
-public class MainSchedule extends Fragment {
+public class MainSchedule extends Fragment implements OnTemperatureChangedListener, OnThermostatChosenListener{
 
     // TODO: Rename and change types and number of parameters
     public static MainSchedule newInstance() {
@@ -62,7 +66,53 @@ public class MainSchedule extends Fragment {
             }
         });
 
-        return v;
+        Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
+        ThermostatClient.getInstance().setOnThermostatChosenListener(this);
+        //TODO: add setOnTemperatureChanged
+        if (thermostat != null) {
+            TextView tw_day = (TextView) v.findViewById(R.id.textView6);
+            TextView tw_night = (TextView) v.findViewById(R.id.textView7);
+            tw_day.setText(Double.toString(thermostat.getSchedule().getDayTemp()));
+            tw_night.setText(Double.toString(thermostat.getSchedule().getNightTemp()));
+        }
 
+        return v;
     }
+
+
+
+    @Override
+    public void onDayTemperatureChanged(double new_temp) {
+        Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
+        if (getView() != null) {
+            TextView tw_day = (TextView) getView().findViewById(R.id.textView6);
+            tw_day.setText(Double.toString(thermostat.getSchedule().getDayTemp()));
+        }
+    }
+
+    @Override
+    public void onNightTemperatureChanged(double new_temp) {
+        Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
+        if (getView() != null) {
+            TextView tw_night = (TextView) getView().findViewById(R.id.textView7);
+            tw_night.setText(Double.toString(thermostat.getSchedule().getNightTemp()));
+        }
+    }
+
+    @Override
+    public void onThermostatChosen() {
+        Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
+        if (getView() != null) {
+            TextView tw_day = (TextView) getView().findViewById(R.id.textView6);
+            TextView tw_night = (TextView) getView().findViewById(R.id.textView7);
+            tw_day.setText(Double.toString(thermostat.getSchedule().getDayTemp()));
+            tw_night.setText(Double.toString(thermostat.getSchedule().getNightTemp()));
+        }
+    }
+
+    @Override
+    public void onActualTemperatureChanged(double new_temp) {}
+
+    @Override
+    public void onTargetTemperatureChanged(double new_temp) {}
 }
