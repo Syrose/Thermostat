@@ -7,22 +7,26 @@ import java.util.ArrayList;
  */
 public class Switch {
 
-    Time from;
-    Time until;
-
-    public Time getFrom()
+    public Switch(Time switchTime) {
+        this.switchTime = switchTime;
+    }
+    public Switch()
     {
-        return from;
+        this.switchTime=new Time();
     }
 
-    public Time getUntil()
-    {
-        return until;
+    Time switchTime;
+
+    public Time getSwitchTime() {
+        return switchTime;
     }
 
-    public Switch(Time from, Time until)
-    {
-        this.from = from;
-        this.until = until;
+    public void setSwitchTime(Time switchTime) {
+        this.switchTime = switchTime;
     }
+
+
+
+
+
 }

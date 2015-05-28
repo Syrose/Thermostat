@@ -31,14 +31,14 @@ public class Thermostat {
 
     Schedule schedule;
 
-    public int getCurrentTargetTemperature()
+    public double getCurrentTargetTemperature()
     {
-        return 25;
+        return 19.0;
     }
 
-    public int getActualTemperature()
+    public double getActualTemperature()
     {
-        return 20;
+        return 19.5;
     }
 
     private Thermostat()
