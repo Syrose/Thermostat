@@ -36,13 +36,13 @@ public class MainControl extends Fragment implements OnThermostatChosenListener,
         ImageButton b_settings = (ImageButton) v.findViewById(R.id.imageButton2);
         ImageButton b_chooser = (ImageButton) v.findViewById(R.id.imageButton);
 
-        b_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getActivity(), ScheduleSettings.class);
-                startActivity(i);
-            }
-        });
+//        b_settings.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getActivity(), ScheduleSettings.class);
+//                startActivity(i);
+//            }
+//        });
 
         b_chooser.setOnClickListener(new View.OnClickListener() {
             @Override
