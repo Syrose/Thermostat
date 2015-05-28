@@ -14,35 +14,35 @@ public class Day {
         this.name = name;
     }
 
-    public ArrayList<Switch> getDaySwitches() {
-        return daySwitches;
+    public ArrayList<Switch> getDayToNightSwitches() {
+        return dayToNightSwitches;
     }
 
-    ArrayList<Switch> daySwitches;
+    ArrayList<Switch> dayToNightSwitches;
 
-    public ArrayList<Switch> getNightSwitches() {
-        return nightSwitches;
+    public ArrayList<Switch> getNightToDaySwitches() {
+        return nightToDaySwitches;
     }
 
-    ArrayList<Switch> nightSwitches;
+    ArrayList<Switch> nightToDaySwitches;
 
     public void addNightSwitch(Switch sw)
     {
-        nightSwitches.add(sw);
+        nightToDaySwitches.add(sw);
     }
 
     public void addDaySwitch(Switch sw)
     {
-        daySwitches.add(sw);
+        dayToNightSwitches.add(sw);
     }
 
     public void deleteNightSwitch(int position)
     {
-        nightSwitches.remove(position);
+        nightToDaySwitches.remove(position);
     }
 
     public void deleteDaySwitch(int position)
     {
-        daySwitches.remove(position);
+        dayToNightSwitches.remove(position);
     }
 }

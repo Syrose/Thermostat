@@ -25,23 +25,23 @@ public class Schedule {
         week.put(Days.SUN, new Day(Days.SUN));
     }
 
-    public int getNightTemp() {
+    public double getNightTemp() {
         return nightTemp;
     }
 
-    public void setNightTemp(int nightTemp) {
+    public void setNightTemp(double nightTemp) {
         this.nightTemp = nightTemp;
     }
 
-    private int nightTemp;
+    private double nightTemp;
 
-    public int getDayTemp() {
+    public double getDayTemp() {
         return dayTemp;
     }
 
-    public void setDayTemp(int dayTemp) {
+    public void setDayTemp(double dayTemp) {
         this.dayTemp = dayTemp;
     }
 
-    private int dayTemp;
+    private double dayTemp;
 }
