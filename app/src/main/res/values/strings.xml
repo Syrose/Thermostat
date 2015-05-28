@@ -11,5 +11,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_edit_switches">EditSwitches</string>
     <string name="title_activity_edit_temperature">EditTemperature</string>
+    <string name="title_activity_schedule_settings">ScheduleSettings</string>
+    <string name="title_activity_thermostat_chooser">ThermostatChooser</string>
 
 </resources>

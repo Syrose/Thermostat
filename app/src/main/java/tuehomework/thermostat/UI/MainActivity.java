@@ -80,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
                     fragment = MainControl.newInstance();
                     break;
                 case 1:
-                    fragment = MainSchedule.newInstance("", "");
+                    fragment = MainSchedule.newInstance();
                     break;
             }
 

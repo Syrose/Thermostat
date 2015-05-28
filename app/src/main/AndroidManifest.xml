@@ -24,6 +24,14 @@
             android:name=".UI.EditTemperature"
             android:label="@string/title_activity_edit_temperature" >
         </activity>
+        <activity
+            android:name=".UI.ScheduleSettings"
+            android:label="@string/title_activity_schedule_settings" >
+        </activity>
+        <activity
+            android:name=".UI.ThermostatChooser"
+            android:label="@string/title_activity_thermostat_chooser" >
+        </activity>
     </application>
 
 </manifest>
