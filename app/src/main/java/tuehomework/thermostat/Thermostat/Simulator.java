@@ -14,6 +14,7 @@ public class Simulator {
     double currentTemperature;
     double goalTemperature;
     Timer timer;
+    Timer delayTimer;
     Time currentTime;
     Day currentDay;
     Schedule executedSchedule;
@@ -28,6 +29,7 @@ public class Simulator {
 
     OnTimeChangedListener timeChangedListener;
     OnTemperatureChangedListener tempChangedListener;
+
 
     public Day getCurrentDay() {
         return currentDay;
@@ -94,10 +96,30 @@ public class Simulator {
         };
 
         timer=new Timer();
-        timer.schedule(task,3);
+        timer.schedule(task,200);
+
+        delayTimer=new Timer();
 
 
+        TimerTask delayTask=new TimerTask() {
+            @Override
+            public void run() {
+                if (currentTemperature-goalTemperature>0)
+                {
+                    currentTemperature=currentTemperature-0.1;
+                   tempChangedListener.onActualTemperatureChanged(currentTemperature);
 
+                }
+                else if(currentTemperature-goalTemperature<0)
+                {
+                    currentTemperature=currentTemperature+0.1;
+                    tempChangedListener.onActualTemperatureChanged(currentTemperature);
+                }
+            }
+        };
+
+
+delayTimer.schedule(delayTask, 200);
 
 
 
