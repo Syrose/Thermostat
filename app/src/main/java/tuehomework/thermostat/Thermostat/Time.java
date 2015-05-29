@@ -7,10 +7,29 @@ public class Time {
     public int getHours() {
         return hours;
     }
-    public int getSeconds() {
-        return seconds;
+    public int getMinutes() {
+        return minutes;
+    }
+    public Time ()
+    {
+        hours=0;
+        minutes=0;
+    }
+
+    public Time(int hours, int seconds) {
+        this.hours = hours;
+        this.minutes = seconds;
+    }
+
+    public void setHours(int hours) {
+        this.hours = hours;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
     }
 
     private int hours;
-    private int seconds;
+    private int minutes;
+
 }
