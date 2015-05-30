@@ -2,6 +2,7 @@ package tuehomework.thermostat.UI;
 
 import java.util.Locale;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBar;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.View;
 
 import tuehomework.thermostat.R;
+import tuehomework.thermostat.Thermostat.Simulator;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -33,6 +35,8 @@ public class MainActivity extends ActionBarActivity {
      */
     ViewPager mViewPager;
 
+    public static Activity currentInstance;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,7 @@ public class MainActivity extends ActionBarActivity {
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        currentInstance = this;
     }
 
 
@@ -89,8 +94,17 @@ public class MainActivity extends ActionBarActivity {
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
             return 2;
         }
+    }
+
+    public void incTemp(View view)
+    {
+        Simulator.currentInstance.setGoalTemperature(Simulator.currentInstance.getGoalTemperature() + 1);
+    }
+
+    public void decTemp(View view)
+    {
+        Simulator.currentInstance.setGoalTemperature(Simulator.currentInstance.getGoalTemperature() - 1);
     }
 }

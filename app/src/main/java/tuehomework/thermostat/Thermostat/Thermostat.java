@@ -1,5 +1,8 @@
 package tuehomework.thermostat.Thermostat;
 
+import tuehomework.thermostat.UI.MainActivity;
+import tuehomework.thermostat.UI.MainControl;
+
 /**
  * Created by Platon on 28.05.2015.
  */
@@ -12,7 +15,7 @@ public class Thermostat {
         this.schedule = schedule;
     }
 
-    Schedule schedule;
+    Schedule schedule = new Schedule();
 
     public double getCurrentTargetTemperature()
     {

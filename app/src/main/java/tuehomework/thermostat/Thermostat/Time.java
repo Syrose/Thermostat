@@ -32,4 +32,9 @@ public class Time {
     private int hours;
     private int minutes;
 
+    @Override
+    public boolean equals(Object obj)
+    {
+        return hours == ((Time)obj).hours && minutes == ((Time)obj).minutes;
+    }
 }

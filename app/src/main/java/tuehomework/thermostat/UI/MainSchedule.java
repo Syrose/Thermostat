@@ -16,6 +16,7 @@ import tuehomework.thermostat.R;
 import tuehomework.thermostat.Thermostat.Days;
 import tuehomework.thermostat.Thermostat.OnTemperatureChangedListener;
 import tuehomework.thermostat.Thermostat.OnThermostatChosenListener;
+import tuehomework.thermostat.Thermostat.Simulator;
 import tuehomework.thermostat.Thermostat.Thermostat;
 import tuehomework.thermostat.Thermostat.ThermostatClient;
 
@@ -28,6 +29,8 @@ public class MainSchedule extends Fragment implements OnTemperatureChangedListen
         return fragment;
     }
 
+    public static MainSchedule currentInstance;
+
     public MainSchedule() {
         // Required empty public constructor
     }
@@ -38,6 +41,7 @@ public class MainSchedule extends Fragment implements OnTemperatureChangedListen
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.main_schedule, container, false);
 
+        currentInstance = this;
         ListView lw = (ListView)v.findViewById(R.id.listView);
         ScheduleArrayAdapter scheduleArrayAdapter = new ScheduleArrayAdapter(getActivity(), new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"});
         lw.setAdapter(scheduleArrayAdapter);
@@ -69,24 +73,21 @@ public class MainSchedule extends Fragment implements OnTemperatureChangedListen
         Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
         ThermostatClient.getInstance().setOnThermostatChosenListener(this);
         //TODO: add setOnTemperatureChanged
-        if (thermostat != null) {
             TextView tw_day = (TextView) v.findViewById(R.id.textView6);
             TextView tw_night = (TextView) v.findViewById(R.id.textView7);
-            tw_day.setText(Double.toString(thermostat.getSchedule().getDayTemp()));
-            tw_night.setText(Double.toString(thermostat.getSchedule().getNightTemp()));
-        }
+            tw_day.setText(Double.toString(Simulator.currentInstance.getDayTemp() / 10.0));
+            tw_night.setText(Double.toString(Simulator.currentInstance.getNightTemp() / 10.0));
 
+        Simulator.getInstance().addTempChangedListener(this);
         return v;
     }
-
-
 
     @Override
     public void onDayTemperatureChanged(double new_temp) {
         Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
         if (getView() != null) {
             TextView tw_day = (TextView) getView().findViewById(R.id.textView6);
-            tw_day.setText(Double.toString(thermostat.getSchedule().getDayTemp()));
+            tw_day.setText(Double.toString(Simulator.getInstance().getDayTemp() / 10.0));
         }
     }
 
@@ -95,7 +96,7 @@ public class MainSchedule extends Fragment implements OnTemperatureChangedListen
         Thermostat thermostat = ThermostatClient.getInstance().getChosenThermostat();
         if (getView() != null) {
             TextView tw_night = (TextView) getView().findViewById(R.id.textView7);
-            tw_night.setText(Double.toString(thermostat.getSchedule().getNightTemp()));
+            tw_night.setText(Double.toString(Simulator.getInstance().getNightTemp() / 10.0));
         }
     }
 

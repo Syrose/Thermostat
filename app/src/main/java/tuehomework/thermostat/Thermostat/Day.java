@@ -7,6 +7,10 @@ import java.util.ArrayList;
  */
 public class Day {
 
+    public Days getName() {
+        return name;
+    }
+
     Days name;
 
     public Day(Days name)
@@ -18,13 +22,13 @@ public class Day {
         return dayToNightSwitches;
     }
 
-    ArrayList<Switch> dayToNightSwitches;
+    ArrayList<Switch> dayToNightSwitches = new ArrayList<>();
 
     public ArrayList<Switch> getNightToDaySwitches() {
         return nightToDaySwitches;
     }
 
-    ArrayList<Switch> nightToDaySwitches;
+    ArrayList<Switch> nightToDaySwitches = new ArrayList<>();
 
     public void addNightToDaySwitch(Switch sw)
     {

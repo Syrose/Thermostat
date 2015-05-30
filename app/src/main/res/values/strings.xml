@@ -13,5 +13,6 @@
     <string name="title_activity_edit_temperature">EditTemperature</string>
     <string name="title_activity_schedule_settings">ScheduleSettings</string>
     <string name="title_activity_thermostat_chooser">ThermostatChooser</string>
+    <string name="title_activity_add_switch">AddSwitch</string>
 
 </resources>

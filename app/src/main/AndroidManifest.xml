@@ -9,6 +9,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".UI.MainActivity"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,19 +19,28 @@
         </activity>
         <activity
             android:name=".UI.EditSwitches"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_edit_switches" >
         </activity>
         <activity
             android:name=".UI.EditTemperature"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_edit_temperature" >
         </activity>
         <activity
             android:name=".UI.ScheduleSettings"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_schedule_settings" >
         </activity>
         <activity
             android:name=".UI.ThermostatChooser"
+            android:screenOrientation="portrait"
             android:label="@string/title_activity_thermostat_chooser" >
+        </activity>
+        <activity
+            android:name=".UI.AddSwitch"
+            android:screenOrientation="portrait"
+            android:label="@string/title_activity_add_switch" >
         </activity>
     </application>
 

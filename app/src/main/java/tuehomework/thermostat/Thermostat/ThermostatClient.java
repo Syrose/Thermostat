@@ -24,7 +24,7 @@ public class ThermostatClient {
         return chosen;
     }
 
-    private Thermostat chosen;
+    private Thermostat chosen = new Thermostat();
     private ArrayList<Thermostat> thermostats;
 
     public void setOnThermostatChosenListener(OnThermostatChosenListener thermostatChosenListener) {

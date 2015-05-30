@@ -17,64 +17,65 @@ import tuehomework.thermostat.Thermostat.Simulator;
 import tuehomework.thermostat.Thermostat.Switch;
 import tuehomework.thermostat.Thermostat.Time;
 
+public class AddSwitch extends ActionBarActivity {
 
-public class EditTemperature extends ActionBarActivity {
 
-    public static final String DAY_OR_NIGHT = "DAY_OR_NIGHT";
-
-    private boolean dayOrNight; //true is day, false is night
+    public static final String TYPE = "TYPE";
+    public static final String DAY = "DAY";
+    private boolean type;
+    private Days day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_temperature);
+        setContentView(R.layout.activity_add_switch);
 
         Bundle b = getIntent().getExtras();
-        dayOrNight = b.getBoolean(DAY_OR_NIGHT);
-
-        getSupportActionBar().setTitle(dayOrNight ? "Edit day temperature" : "Edit night temperature");
+        type = b.getBoolean(TYPE);
+        getSupportActionBar().setTitle(type ? "Adding switch to day temperature" : "Adding switch to night temperature");
+        day = (Days)b.get(DAY);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_edit_temperature, menu);
+        getMenuInflater().inflate(R.menu.menu_add_switch, menu);
         return true;
     }
 
-    public void applyChange(View view)
+    public void addSwitch(View view)
     {
+
         EditText editText = (EditText)findViewById(R.id.editText);
         EditText editText2 = (EditText)findViewById(R.id.editText2);
-        int integers = 0;
-        int frac = 0;
+        int hours = 0;
+        int minutes = 0;
 
         try {
-            integers = Integer.parseInt(editText.getText().toString());
-            frac = Integer.parseInt(editText2.getText().toString());
+            hours = Integer.parseInt(editText.getText().toString());
+            minutes = Integer.parseInt(editText2.getText().toString());
         } catch (NumberFormatException e) {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-            builder.setMessage("Must be positive with .1 precision")
+            builder.setMessage("Wrong time format, should be HH:MM")
                     .setTitle("Wrong format");
 
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-
                 }
             });
 
             AlertDialog dialog = builder.create();
             dialog.show();
-
             return;
         }
 
-        if (!(integers >= 0 && frac < 10 && frac >= 0))
+        if (!(hours <= 24 && hours >= 0 && minutes < 60 && minutes >= 0))
         {
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-            builder.setMessage("Must be positive with .1 precision")
+            builder.setMessage("Wrong time format, should be HH:MM")
                     .setTitle("Wrong format");
 
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -89,14 +90,18 @@ public class EditTemperature extends ActionBarActivity {
             return;
         }
 
+        Schedule schedule = Simulator.getInstance().getExecutedSchedule();
 
-        if (dayOrNight)
+        Day day_obj = schedule.getDay(day);
+
+        if (type)
         {
-            Simulator.getInstance().setDayTemp(integers * 10 + frac);
+            day_obj.addNightToDaySwitch(new Switch(new Time(hours, minutes)));
         } else {
-            Simulator.getInstance().setNightTemp(integers * 10 + frac);
+            day_obj.addDayToNightSwitch(new Switch(new Time(hours, minutes)));
         }
 
+        EditSwitches.currentInstance.refreshData();
         finish();
     }
 }

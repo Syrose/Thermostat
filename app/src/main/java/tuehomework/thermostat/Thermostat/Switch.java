@@ -1,6 +1,7 @@
 package tuehomework.thermostat.Thermostat;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Created by Platon on 28.05.2015.
@@ -25,5 +26,11 @@ public class Switch {
         this.switchTime = switchTime;
     }
 
+
+    @Override
+    public String toString()
+    {
+        return switchTime.getHours() + ":" + (switchTime.getMinutes() < 10 ? "0" : "") + switchTime.getMinutes();
+    }
 
 }
